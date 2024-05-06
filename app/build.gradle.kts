@@ -61,6 +61,10 @@ dependencies {
     implementation("androidx.compose.material3:material3")
     implementation("androidx.constraintlayout:constraintlayout:2.1.4")
 
+    //Biometric
+    implementation("androidx.biometric:biometric:1.1.0")
+
+
     //navigation
     implementation("androidx.navigation:navigation-fragment-ktx:$navVersion")
     implementation("androidx.navigation:navigation-ui-ktx:$navVersion")
