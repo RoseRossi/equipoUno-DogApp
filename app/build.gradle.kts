@@ -1,6 +1,7 @@
 plugins {
     id("com.android.application")
     id("org.jetbrains.kotlin.android")
+    id("kotlin-kapt")
 }
 
 android {
@@ -19,7 +20,13 @@ android {
             useSupportLibrary = true
         }
     }
-
+    gradle.projectsLoaded {
+        tasks.withType<org.jetbrains.kotlin.gradle.tasks.KotlinCompile> {
+            kotlinOptions {
+                freeCompilerArgs = freeCompilerArgs + "-XXLanguage:+NonParenthesizedAnnotationsOnFunctionalTypes"
+            }
+        }
+    }
     buildTypes {
         release {
             isMinifyEnabled = false
@@ -47,6 +54,9 @@ android {
             excludes += "/META-INF/{AL2.0,LGPL2.1}"
         }
     }
+    buildFeatures {
+        dataBinding = true
+    }
 }
 
 dependencies {
@@ -60,6 +70,9 @@ dependencies {
     implementation("androidx.compose.ui:ui-tooling-preview")
     implementation("androidx.compose.material3:material3")
     implementation("androidx.constraintlayout:constraintlayout:2.1.4")
+
+    // Fragments
+    implementation ("androidx.fragment:fragment-ktx:1.7.0")
 
     //Biometric
     implementation("androidx.biometric:biometric:1.1.0")
