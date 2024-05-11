@@ -1,5 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <style name="Theme.DogApp" parent="android:Theme.Material.Light.NoActionBar" />
+<!--    <style name="Theme.DogApp" parent="android:Theme.Material.Light.NoActionBar" />-->
+    <style name="Theme.DogApp" parent="Theme.AppCompat.Light">
+        <!-- Personaliza tu tema aquí si es necesario -->
+    </style>
 </resources>
