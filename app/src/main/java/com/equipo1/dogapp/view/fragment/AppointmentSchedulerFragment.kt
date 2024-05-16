@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import com.equipo1.dogapp.databinding.FragmentAppointmentSchedulerBinding
 
 class AppointmentSchedulerFragment : Fragment() {
@@ -22,6 +23,13 @@ class AppointmentSchedulerFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        //controladores()
+        this.controllers()
+    }
+
+    private fun controllers()
+    {
+        binding.addNewAppointment.setOnClickListener {
+            Toast.makeText(context, "UMMM YA", Toast.LENGTH_SHORT).show()
+        }
     }
 }

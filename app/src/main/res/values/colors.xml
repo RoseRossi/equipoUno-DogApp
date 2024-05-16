@@ -11,4 +11,6 @@
     <color name="bg_page">#FEF7FF</color>
     <color name="red_orange">#F05861</color>
     <color name="purple">#6750A4</color>
+    <color name="bg_tertiary">#FEF7FF</color>
+    <color name="bg_red">#EF5860</color>
 </resources>
