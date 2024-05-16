@@ -8,6 +8,9 @@
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
     <color name="bg_secundary">#1e282d</color>
+    <color name="bg_page">#FEF7FF</color>
+    <color name="red_orange">#F05861</color>
+    <color name="purple">#6750A4</color>
     <color name="bg_tertiary">#FEF7FF</color>
     <color name="bg_red">#EF5860</color>
 </resources>
