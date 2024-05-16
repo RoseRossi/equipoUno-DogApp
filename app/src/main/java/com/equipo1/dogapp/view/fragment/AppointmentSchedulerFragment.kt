@@ -6,6 +6,8 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.navigation.fragment.findNavController
+import com.equipo1.dogapp.R
 import com.equipo1.dogapp.databinding.FragmentAppointmentSchedulerBinding
 
 class AppointmentSchedulerFragment : Fragment() {
@@ -29,7 +31,7 @@ class AppointmentSchedulerFragment : Fragment() {
     private fun controllers()
     {
         binding.addNewAppointment.setOnClickListener {
-            Toast.makeText(context, "UMMM YA", Toast.LENGTH_SHORT).show()
+            findNavController().navigate(R.id.action_appointmentSchedulerFragment_to_addNewAppointmentFragment)
         }
     }
 }
