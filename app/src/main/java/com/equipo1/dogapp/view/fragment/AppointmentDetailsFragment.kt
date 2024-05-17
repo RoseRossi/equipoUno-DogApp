@@ -6,12 +6,16 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import com.equipo1.dogapp.R
 import com.equipo1.dogapp.databinding.FragmentAppointmentDetailsBinding
+import com.equipo1.dogapp.model.InventoryAppointment
+import com.equipo1.dogapp.viewmodel.AppointmentModel
 
 class AppointmentDetailsFragment : Fragment() {
     private lateinit var binding: FragmentAppointmentDetailsBinding
+    private val appointmentModel : AppointmentModel by viewModels()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -43,5 +47,20 @@ class AppointmentDetailsFragment : Fragment() {
         binding.backButton.setOnClickListener {
             findNavController().navigate(R.id.action_appointmentDetailsFragment_to_appointmentSchedulerFragment)
         }
+
+        binding.btnDelete.setOnClickListener {
+            val id = binding.idNumber.text.toString().toInt()
+            val inventory = InventoryAppointment(
+                id = id,
+                pet_name = binding.petName.text.toString(),
+                pel_symptoms = binding.petDetails.text.toString(),
+                tel_numbe = binding.phone.text.toString(),
+                owner_name = binding.owner.text.toString(),
+                pet_breed = binding.petBreed.text.toString(),
+            )
+            appointmentModel.delete(inventory)
+            findNavController().navigate(R.id.action_appointmentDetailsFragment_to_appointmentSchedulerFragment)
+        }
     }
+
 }
