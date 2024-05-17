@@ -11,6 +11,7 @@
     <string name="save">Guardar Cita</string>
     <string name="default_spinner_text">Síntomas</string>
     <string-array name="illness_array">
+        <item>Síntomas</item>
         <item>Solo duerme</item>
         <item>No come</item>
         <item>Fractura extremidad</item>
