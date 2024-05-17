@@ -5,4 +5,9 @@
     <style name="Theme.DogApp" parent="Theme.AppCompat.Light">
         <!-- Personaliza tu tema aquí si es necesario -->
     </style>
+
+    <style name="OutlinedBox" parent="Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+        <item name="boxStrokeColor">@color/purple</item>
+        <item name="hintTextAppearance">@color/black</item>
+    </style>
 </resources>
