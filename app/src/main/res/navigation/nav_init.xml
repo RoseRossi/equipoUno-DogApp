@@ -20,18 +20,43 @@
         android:label="fragment_appointment_scheduler"
         tools:layout="@layout/fragment_appointment_scheduler" >
         <action
-            android:id="@+id/action_appointmentSchedulerFragment_to_homeLoginFragment"
-            app:destination="@id/homeLoginFragment" />
-        <action
             android:id="@+id/action_appointmentSchedulerFragment_to_addNewAppointmentFragment"
             app:destination="@id/addNewAppointmentFragment" />
+        <action
+            android:id="@+id/action_appointmentSchedulerFragment_to_appointmentDetailsFragment"
+            app:destination="@id/appointmentDetailsFragment" />
     </fragment>
     <fragment
         android:id="@+id/addNewAppointmentFragment"
         android:name="com.equipo1.dogapp.view.fragment.AddNewAppointmentFragment"
-        android:label="AddNewAppointmentFragment" >
+        android:label="AddNewAppointmentFragment"
+        tools:layout="@layout/fragment_add_new_appointment">
         <action
             android:id="@+id/action_addNewAppointmentFragment_to_appointmentSchedulerFragment"
+            app:destination="@id/appointmentSchedulerFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/appointmentDetailsFragment"
+        android:name="com.equipo1.dogapp.view.fragment.AppointmentDetailsFragment"
+        android:label="AppointmentDetailsFragment"
+        tools:layout="@layout/fragment_appointment_details">
+        <action
+            android:id="@+id/action_appointmentDetailsFragment_to_appointmentSchedulerFragment"
+            app:destination="@id/appointmentSchedulerFragment" />
+        <action
+            android:id="@+id/action_appointmentDetailsFragment_to_editAppointmentFragment"
+            app:destination="@id/editAppointmentFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/editAppointmentFragment"
+        android:name="com.equipo1.dogapp.view.fragment.EditAppointmentFragment"
+        android:label="EditAppointmentFragment"
+        tools:layout="@layout/fragment_edit_appointment">
+        <action
+            android:id="@+id/action_editAppointmentFragment_to_appointmentDetailsFragment"
+            app:destination="@id/appointmentDetailsFragment" />
+        <action
+            android:id="@+id/action_editAppointmentFragment_to_appointmentSchedulerFragment"
             app:destination="@id/appointmentSchedulerFragment" />
     </fragment>
 </navigation>

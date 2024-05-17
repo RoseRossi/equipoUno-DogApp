@@ -1,6 +1,7 @@
 package com.equipo1.dogapp.viewmodel
 
 import android.app.Application
+import android.util.Log
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
@@ -31,6 +32,31 @@ class AppointmentModel(application: Application) : AndroidViewModel(application)
                 _progresState.value = false
             } catch (e: Exception) {
                 _progresState.value = false
+            }
+        }
+    }
+
+    fun  update(inventory: InventoryAppointment)
+    {
+        viewModelScope.launch {
+
+            try {
+                inventoryRepository.updateRepositoy(inventory)
+                Log.d("UpdateRepositoy", "Inventory updated successfully: $inventory")
+            } catch (e: Exception) {
+                Log.d("UpdateRepositoy", "Error updating inventory: ${e.message}")
+            }
+        }
+    }
+
+    fun  delete(inventory: InventoryAppointment)
+    {
+        viewModelScope.launch {
+            try {
+                inventoryRepository.deleteInventory(inventory)
+                Log.d("DeleteInventory", "Inventory deleted successfully: $inventory")
+            } catch (e: Exception) {
+                Log.d("DeleteInventory", "Error deleting inventory: ${e.message}")
             }
         }
     }

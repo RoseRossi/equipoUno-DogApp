@@ -6,19 +6,26 @@ import android.text.TextWatcher
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.fragment.app.Fragment
-import com.equipo1.dogapp.databinding.FragmentAddNewAppointmentBinding
 import android.widget.ArrayAdapter
 import android.widget.Toast
-import com.equipo1.dogapp.R
 import androidx.core.content.ContextCompat
-import androidx.fragment.app.viewModels
+import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
+import com.equipo1.dogapp.R
+import com.equipo1.dogapp.api.DogBreedsResponse
+import com.equipo1.dogapp.api.RetrofitClient
+import com.equipo1.dogapp.databinding.FragmentAddNewAppointmentBinding
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
+import androidx.fragment.app.viewModels
 import com.equipo1.dogapp.model.InventoryAppointment
 import com.equipo1.dogapp.viewmodel.AppointmentModel
 
 class AddNewAppointmentFragment : Fragment() {
     private lateinit var binding: FragmentAddNewAppointmentBinding
+    private lateinit var adapter: ArrayAdapter<String>
+    private val breedList = mutableListOf<String>()
     private val appointmentModel : AppointmentModel by viewModels()
 
     override fun onCreateView(
@@ -37,12 +44,45 @@ class AddNewAppointmentFragment : Fragment() {
         binding.backButton.setOnClickListener {
             findNavController().navigate(R.id.action_addNewAppointmentFragment_to_appointmentSchedulerFragment)
         }
-        val items = resources.getStringArray(R.array.illness_array).toMutableList()
-        items.add(0, getString(R.string.default_spinner_text))
-        val adapter = ArrayAdapter(requireContext(), android.R.layout.simple_spinner_item, items)
-        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
-        binding.spinner.adapter = adapter
-        binding.spinner.setSelection(0)
+
+        val items = resources.getStringArray(R.array.illness_array)
+        val illnessAdapter = ArrayAdapter(requireContext(), android.R.layout.simple_spinner_item, items)
+        illnessAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
+        binding.spinner.adapter = illnessAdapter
+
+        setupAutoCompleteTextView()
+        fetchDogBreeds()
+    }
+
+    private fun setupAutoCompleteTextView() {
+        adapter = ArrayAdapter(requireContext(), android.R.layout.simple_dropdown_item_1line, breedList)
+        binding.autoCompleteText.setAdapter(adapter)
+        binding.autoCompleteText.threshold = 2 // Start showing suggestions after 2 characters
+    }
+
+    private fun fetchDogBreeds() {
+        RetrofitClient.dogApiService.dogBreeds?.enqueue(object : Callback<DogBreedsResponse?> {
+            override fun onResponse(call: Call<DogBreedsResponse?>, response: Response<DogBreedsResponse?>) {
+                if (response.isSuccessful) {
+                    response.body()?.message?.let { breeds ->
+                        breedList.clear()
+                        for ((key, value) in breeds) {
+                            breedList.add(key)
+                            value.forEach { subBreed ->
+                                breedList.add("$key $subBreed")
+                            }
+                        }
+                        adapter.notifyDataSetChanged()
+                    }
+                } else {
+                    Toast.makeText(requireContext(), "Failed to fetch dog breeds", Toast.LENGTH_SHORT).show()
+                }
+            }
+
+            override fun onFailure(call: Call<DogBreedsResponse?>, t: Throwable) {
+                Toast.makeText(requireContext(), "Error: ${t.message}", Toast.LENGTH_SHORT).show()
+            }
+        })
     }
 
     private fun textWatcher() {
@@ -96,9 +136,9 @@ class AddNewAppointmentFragment : Fragment() {
     private fun updateButtonState(isEnabled: Boolean) {
         binding.btnSave.isEnabled = isEnabled
         val textColor = if (isEnabled) {
-            ContextCompat.getColor(requireContext(), R.color.button_enabled_text_color)
+            ContextCompat.getColor(requireContext(), R.color.white)
         } else {
-            ContextCompat.getColor(requireContext(), R.color.button_disabled_text_color)
+            ContextCompat.getColor(requireContext(), R.color.black)
         }
         binding.btnSave.setTextColor(textColor)
     }
