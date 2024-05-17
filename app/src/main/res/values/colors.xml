@@ -13,4 +13,5 @@
     <color name="purple">#6750A4</color>
     <color name="bg_tertiary">#FEF7FF</color>
     <color name="bg_red">#EF5860</color>
+    <color name="grey_color">#2E2E2E</color>
 </resources>
