@@ -2,6 +2,7 @@ plugins {
     id("com.android.application")
     id("org.jetbrains.kotlin.android")
     id("kotlin-kapt")
+    id("com.google.devtools.ksp")
 }
 
 android {
@@ -77,6 +78,14 @@ dependencies {
     //Biometric
     implementation("androidx.biometric:biometric:1.1.0")
 
+    // Room
+    implementation ("androidx.room:room-runtime:2.5.2")
+    implementation ("androidx.room:room-ktx:2.5.2")
+    ksp("androidx.room:room-compiler:2.5.2")
+    implementation ("com.getbase:floatingactionbutton:1.10.1")
+
+    // LiveData
+    implementation ("androidx.lifecycle:lifecycle-livedata-ktx:2.3.1")
 
     //navigation
     implementation("androidx.navigation:navigation-fragment-ktx:$navVersion")
