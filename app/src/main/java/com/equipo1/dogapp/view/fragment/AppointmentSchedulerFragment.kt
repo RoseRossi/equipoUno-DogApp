@@ -14,6 +14,7 @@ import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.equipo1.dogapp.R
 import com.equipo1.dogapp.view.adapter.ListAppointmentAdapter
+import androidx.activity.OnBackPressedCallback
 
 class AppointmentSchedulerFragment : Fragment() {
     private lateinit var binding: FragmentAppointmentSchedulerBinding
@@ -22,37 +23,44 @@ class AppointmentSchedulerFragment : Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View?
-    {
+    ): View? {
         binding = FragmentAppointmentSchedulerBinding.inflate(inflater)
         binding.lifecycleOwner = this
         return binding.root
     }
 
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?)
-    {
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         this.controllers()
         this.observadorViewModel()
+
+        // Handling back press
+        requireActivity().onBackPressedDispatcher.addCallback(
+            viewLifecycleOwner,
+            object : OnBackPressedCallback(true) {
+                override fun handleOnBackPressed() {
+                    // Minimize the app instead of going to login
+                    requireActivity().moveTaskToBack(true)
+                }
+            }
+        )
     }
 
-    private fun controllers()
-    {
+    private fun controllers() {
         binding.addNewAppointment.setOnClickListener {
             findNavController().navigate(R.id.action_appointmentSchedulerFragment_to_addNewAppointmentFragment)
         }
     }
 
-    private fun observadorViewModel(){
+    private fun observadorViewModel() {
         observerListInventory()
         observerProgress()
     }
 
     @SuppressLint("NotifyDataSetChanged")
-    private fun observerListInventory(){
-
+    private fun observerListInventory() {
         appointmentModel.getListInventory()
-        appointmentModel.listInventory.observe(viewLifecycleOwner){ listInventory ->
+        appointmentModel.listInventory.observe(viewLifecycleOwner) { listInventory ->
             val recycler = binding.recyclerview
             val layoutManager = LinearLayoutManager(context)
             recycler.layoutManager = layoutManager
@@ -61,8 +69,9 @@ class AppointmentSchedulerFragment : Fragment() {
             adapter.notifyDataSetChanged()
         }
     }
-    private fun observerProgress(){
-        appointmentModel.progresState.observe(viewLifecycleOwner){status ->
+
+    private fun observerProgress() {
+        appointmentModel.progresState.observe(viewLifecycleOwner) { status ->
             binding.progress.isVisible = status
         }
     }
