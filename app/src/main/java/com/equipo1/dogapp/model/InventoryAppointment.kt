@@ -11,5 +11,5 @@ data class InventoryAppointment(
   val owner_name: String,
   val pet_breed: String,
   val tel_numbe: String,
-  val pel_symptoms: String
+  val pel_symptoms: String,
 )

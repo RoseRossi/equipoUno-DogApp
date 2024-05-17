@@ -23,5 +23,7 @@
     </string-array>
     <color name="button_enabled_text_color">@color/white</color>
     <color name="button_disabled_text_color">@color/bg_secundary</color>
+    <string name="dog_image_desc">Descripción de la imagen del perro</string>
+
 
 </resources>
