@@ -12,9 +12,14 @@ import android.widget.ArrayAdapter
 import android.widget.Toast
 import com.equipo1.dogapp.R
 import androidx.core.content.ContextCompat
+import androidx.fragment.app.viewModels
+import androidx.navigation.fragment.findNavController
+import com.equipo1.dogapp.model.InventoryAppointment
+import com.equipo1.dogapp.viewmodel.AppointmentModel
 
 class AddNewAppointmentFragment : Fragment() {
     private lateinit var binding: FragmentAddNewAppointmentBinding
+    private val appointmentModel : AppointmentModel by viewModels()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -29,6 +34,9 @@ class AddNewAppointmentFragment : Fragment() {
         setupButton()
         textWatcher()
 
+        binding.backButton.setOnClickListener {
+            findNavController().navigate(R.id.action_addNewAppointmentFragment_to_appointmentSchedulerFragment)
+        }
         val items = resources.getStringArray(R.array.illness_array).toMutableList()
         items.add(0, getString(R.string.default_spinner_text))
         val adapter = ArrayAdapter(requireContext(), android.R.layout.simple_spinner_item, items)
@@ -65,7 +73,22 @@ class AddNewAppointmentFragment : Fragment() {
             if (selectedSymptom.isBlank() || selectedSymptom == getString(R.string.default_spinner_text)) {
                 Toast.makeText(requireContext(), "Selecciona un síntoma", Toast.LENGTH_SHORT).show()
             } else {
-                Toast.makeText(requireContext(), "Cita guardada", Toast.LENGTH_SHORT).show()
+                val spinner = binding.spinner
+                val petName = binding.editText1.text.toString()
+                val pelSymptoms =spinner.selectedItem.toString()
+                val telNumber = binding.editText3.text.toString()
+                val ownerName = binding.editText2.text.toString()
+                val petBreed = binding.autoCompleteText.text.toString()
+
+                val inventory = InventoryAppointment(
+                    pet_name = petName,
+                    pel_symptoms = pelSymptoms,
+                    tel_numbe = telNumber,
+                    owner_name = ownerName,
+                    pet_breed = petBreed
+                )
+                appointmentModel.save(inventory)
+                findNavController().navigate(R.id.action_addNewAppointmentFragment_to_appointmentSchedulerFragment)
             }
         }
     }

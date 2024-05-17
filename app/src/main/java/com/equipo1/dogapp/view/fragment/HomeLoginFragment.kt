@@ -49,7 +49,6 @@ class HomeLoginFragment : Fragment() {
             }
             else -> {
                 Toast.makeText(requireContext(), ERROR_MESSAGE_BIOMETRIC , Toast.LENGTH_SHORT).show()
-                findNavController().navigate(R.id.action_homeLoginFragment_to_appointmentSchedulerFragment)
             }
         }
     }

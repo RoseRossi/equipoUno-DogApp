@@ -9,14 +9,13 @@
 
         <androidx.cardview.widget.CardView
             xmlns:card_view="http://schemas.android.com/apk/res-auto"
-            android:id="@+id/cvInventory"
             android:layout_gravity="center"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:foreground="@drawable/back_arrow"
-            android:backgroundTint="@color/bg_red"
-            card_view:cardCornerRadius="10dp"
+            android:backgroundTint="@color/white"
+            card_view:cardCornerRadius="4dp"
             android:elevation="8dp"
+            card_view:cardBackgroundColor="@color/bg_red"
             card_view:layout_constraintStart_toStartOf="parent"
             card_view:layout_constraintTop_toTopOf="parent"
             card_view:layout_constraintEnd_toEndOf="parent">
@@ -24,14 +23,14 @@
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:background="@color/biometric_error_color"
+                android:background="@color/white"
                 android:padding="10dp">
 
                 <TextView
                     android:id="@+id/pet_name"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Zapatos"
+                    android:text="Todo"
                     android:padding="5dp"
                     android:textSize="16sp"
                     card_view:layout_constraintTop_toTopOf="parent"
@@ -41,7 +40,7 @@
                     android:id="@+id/pel_symptoms_text"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="$15.000"
+                    android:text="Todo"
                     android:padding="5dp"
                     android:textSize="16sp"
                     android:textStyle="bold"
@@ -52,7 +51,7 @@
                     android:id="@+id/index_appointent"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="5 in stock"
+                    android:text="Todo"
                     android:padding="5dp"
                     android:textSize="16sp"
                     card_view:layout_constraintTop_toBottomOf="@+id/pet_name"

@@ -6,13 +6,13 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
 import androidx.fragment.app.viewModels
 import com.equipo1.dogapp.databinding.FragmentAppointmentSchedulerBinding
-import com.equipo1.dogapp.model.InventoryAppointment
 import com.equipo1.dogapp.viewmodel.AppointmentModel
 import androidx.core.view.isVisible
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.equipo1.dogapp.R
 import com.equipo1.dogapp.view.adapter.ListAppointmentAdapter
 
 class AppointmentSchedulerFragment : Fragment() {
@@ -39,10 +39,7 @@ class AppointmentSchedulerFragment : Fragment() {
     private fun controllers()
     {
         binding.addNewAppointment.setOnClickListener {
-            val inventory = InventoryAppointment(pet_name = "tengo dream" , pel_symptoms = "UMMMM" , tel_numbe = "phone" , owner_name = "aaaaaa" , pet_breed = "kira")
-            appointmentModel.save(inventory)
-            Toast.makeText(context,"Guardado en la base de datos", Toast.LENGTH_SHORT).show()
-            //findNavController().navigate(R.id.action_appointmentSchedulerFragment_to_addNewAppointmentFragment)
+            findNavController().navigate(R.id.action_appointmentSchedulerFragment_to_addNewAppointmentFragment)
         }
     }
 
