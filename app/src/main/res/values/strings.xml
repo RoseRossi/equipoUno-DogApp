@@ -4,4 +4,21 @@
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="new_appointment">Nueva Cita</string>
     <string name="back">Back</string>
+    <string name="petName">Nombre de la mascota</string>
+    <string name="petBreed">Raza</string>
+    <string name="ownerName">Nombre del propietario</string>
+    <string name="telNumber">Teléfono</string>
+    <string name="save">Guardar Cita</string>
+    <string name="default_spinner_text">Síntomas</string>
+    <string-array name="illness_array">
+        <item>Solo duerme</item>
+        <item>No come</item>
+        <item>Fractura extremidad</item>
+        <item>Tiene pulgas</item>
+        <item>Tiene garrapatas</item>
+        <item>Bota demasiado pelo</item>
+    </string-array>
+    <color name="button_enabled_text_color">@color/white</color>
+    <color name="button_disabled_text_color">@color/bg_secundary</color>
+
 </resources>
