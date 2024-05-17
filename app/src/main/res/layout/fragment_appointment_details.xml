@@ -10,7 +10,6 @@
         android:paddingBottom="15dp"
         tools:context=".view.fragment.AppointmentDetailsFragment">
 
-        <!-- Toolbar -->
         <androidx.appcompat.widget.Toolbar
             android:id="@+id/toolbar"
             android:layout_width="match_parent"
@@ -38,7 +37,8 @@
                     android:layout_centerVertical="true"
                     android:contentDescription="@string/back"
                     android:paddingStart="10dp"
-                    android:src="@drawable/back_arrow" />
+                    android:src="@drawable/back_arrow"
+                    tools:ignore="RtlSymmetry" />
 
                 <TextView
                     android:id="@+id/petName"
@@ -227,7 +227,8 @@
                     android:src="@drawable/edit_icon"
                     android:layout_alignParentEnd="true"
                     android:layout_alignParentBottom="true"
-                    app:backgroundTint="@color/red_orange" />
+                    app:backgroundTint="@color/red_orange"
+                    tools:ignore="RelativeOverlap" />
             </RelativeLayout>
         </FrameLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -48,6 +48,19 @@ class AppointmentDetailsFragment : Fragment() {
             findNavController().navigate(R.id.action_appointmentDetailsFragment_to_appointmentSchedulerFragment)
         }
 
+        binding.btnEdit.setOnClickListener {
+                val id = binding.idNumber.text.toString().toIntOrNull() ?: -1
+                if (id != -1){
+                navigateToAppointmentEdit(InventoryAppointment(
+                id = id,
+                pet_name = binding.petName.text.toString(),
+                pel_symptoms = binding.petDetails.text.toString(),
+                tel_numbe = binding.phone.text.toString(),
+                owner_name = binding.owner.text.toString(),
+                pet_breed = binding.petBreed.text.toString(),
+            ))
+                }
+        }
         binding.btnDelete.setOnClickListener {
             val id = binding.idNumber.text.toString().toInt()
             val inventory = InventoryAppointment(
@@ -61,6 +74,18 @@ class AppointmentDetailsFragment : Fragment() {
             appointmentModel.delete(inventory)
             findNavController().navigate(R.id.action_appointmentDetailsFragment_to_appointmentSchedulerFragment)
         }
+    }
+
+     private fun navigateToAppointmentEdit(inventoryAppointment: InventoryAppointment) {
+        val bundle = Bundle().apply {
+            putString("petName", inventoryAppointment.pet_name)
+            putString("petBreed", inventoryAppointment.pet_breed)
+            putString("petDetails", inventoryAppointment.pel_symptoms)
+            putString("owner", inventoryAppointment.owner_name)
+            putString("phone", inventoryAppointment.tel_numbe)
+            putString("idNumber", inventoryAppointment.id.toString())
+        }
+        findNavController().navigate(R.id.action_appointmentDetailsFragment_to_editAppointmentFragment, bundle)
     }
 
 }

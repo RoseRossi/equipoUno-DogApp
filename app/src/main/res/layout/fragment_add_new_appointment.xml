@@ -19,7 +19,9 @@
             android:radius="16dp"
             android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
             android:layout_marginStart="10dp"
-            android:layout_marginEnd="10dp">
+            android:layout_marginEnd="10dp"
+            app:layout_constraintBaseline_toBottomOf="parent"
+            >
 
             <RelativeLayout
                 android:layout_width="match_parent"
