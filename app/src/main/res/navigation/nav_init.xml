@@ -45,4 +45,7 @@
             android:id="@+id/action_appointmentDetailsFragment_to_appointmentSchedulerFragment"
             app:destination="@id/appointmentSchedulerFragment" />
     </fragment>
+    <fragment
+        android:id="@+id/FragmentEditAppointmentBinding"
+        android:name="com.equipo1.dogapp.view.fragment.EditAppointmentFragment" />
 </navigation>
