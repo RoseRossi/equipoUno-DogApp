@@ -21,7 +21,9 @@
             android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent">
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginStart="10dp"
+            android:layout_marginEnd="10dp">
 
             <RelativeLayout
                 android:layout_width="match_parent"
@@ -39,37 +41,60 @@
                     android:src="@drawable/back_arrow" />
 
                 <TextView
+                    android:id="@+id/petName"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_centerInParent="true"
                     android:padding="8dp"
-                    android:text="Nombre Perrito"
                     android:textColor="@color/white"
                     android:textSize="20sp"
+                    android:hint="Name"
                     android:textStyle="bold" />
             </RelativeLayout>
         </androidx.appcompat.widget.Toolbar>
 
-        <LinearLayout
+        <!-- FrameLayout to combine ImageView and LinearLayout -->
+        <FrameLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:gravity="center_horizontal"
-            android:orientation="vertical"
-            tools:layout_editor_absoluteX="-88dp"
-            tools:layout_editor_absoluteY="230dp"
-            tools:ignore="MissingConstraints"
-            android:paddingTop="100dp"
-            android:paddingBottom="50dp"
-            android:layout_marginStart="10dp"
-            android:layout_marginEnd="10dp"
-            android:background="@color/white">
+            android:layout_height="0dp"
+            app:layout_constraintTop_toBottomOf="@id/toolbar"
+            app:layout_constraintBottom_toBottomOf="parent">
 
-            <TextView
-                android:id="@+id/petName"
+            <!-- ImageView -->
+            <ImageView
+                android:id="@+id/petImage"
+                android:layout_marginTop="25dp"
+                android:layout_width="200dp"
+                android:layout_height="200dp"
+                app:layout_constraintWidth_percent="0.2"
+                app:layout_constraintHeight_percent="0.3"
+                android:layout_marginStart="110dp"
+                android:layout_marginEnd="110dp"
+                android:contentDescription="contenido"
+                android:scaleType="centerCrop"
+                android:src="@drawable/logo"
+                android:translationZ="1dp" />
+
+            <!-- LinearLayout -->
+            <LinearLayout
+                android:id="@+id/detailsLayout"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="pitbull"
-                android:layout_marginBottom="20px"
+                android:gravity="center_horizontal"
+                android:orientation="vertical"
+                android:layout_marginTop="130dp"
+                android:paddingTop="100dp"
+                android:paddingBottom="50dp"
+                android:layout_marginStart="10dp"
+                android:layout_marginEnd="10dp"
+                android:background="@color/white">
+
+            <TextView
+                android:id="@+id/petBreed"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="20dp"
+                android:hint="pitbull"
                 android:textAlignment="center"
                 android:textColor="@color/grey_color"
                 android:textSize="24sp"
@@ -79,12 +104,10 @@
                 android:id="@+id/petDetails"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Tiene garrapatas"
                 android:textAlignment="center"
                 android:textColor="@color/grey_color"
                 android:textSize="16sp"
-                tools:layout_editor_absoluteX="0dp"
-                tools:layout_editor_absoluteY="346dp" />
+                android:hint="Síntoma"/>
 
             <View
                 android:layout_width="match_parent"
@@ -95,63 +118,80 @@
                 android:layout_marginStart="25dp"
                 android:layout_marginEnd="25dp"/>
 
-            <TextView
-                android:id="@+id/owner"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
-                android:text="Propietario: Walter"
-                android:textAlignment="textStart"
-                android:textColor="@color/grey_color"
-                android:textSize="16sp"
-                android:paddingLeft="20dp"
-                tools:layout_editor_absoluteX="0dp"
-                tools:layout_editor_absoluteY="370dp"
-                />
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_marginTop="10dp"
+                    android:paddingLeft="20dp">
 
-            <TextView
-                android:id="@+id/phone"
-                android:layout_width="match_parent"
-                android:layout_marginTop="15dp"
-                android:layout_height="wrap_content"
-                android:text="Teléfono: 3045675518"
-                android:paddingLeft="20dp"
-                android:textAlignment="textStart"
-                android:textColor="@color/grey_color"
-                android:textSize="16sp"
-                tools:layout_editor_absoluteX="0dp"
-                tools:layout_editor_absoluteY="391dp" />
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Propietario: "
+                        android:textColor="@color/grey_color"
+                        android:textSize="16sp"/>
+
+                    <TextView
+                        android:id="@+id/owner"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="5dp"
+                        android:textColor="@color/grey_color"
+                        android:textSize="16sp"
+                        android:hint="Nombre del propietario"/>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_marginTop="15dp"
+                    android:paddingLeft="20dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Teléfono: "
+                        android:textColor="@color/grey_color"
+                        android:textSize="16sp"/>
+
+                    <TextView
+                        android:id="@+id/phone"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="5dp"
+                        android:textColor="@color/grey_color"
+                        android:textSize="16sp"
+                        android:hint="Número de teléfono"/>
+                </LinearLayout>
         </LinearLayout>
-        <FrameLayout
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHeight_percent="0.3"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/toolbar"
-            app:layout_constraintWidth_percent="0.5"
-            android:layout_marginTop="50dp">
-
-            <ImageView
-                android:id="@+id/petImage"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:contentDescription="contenido"
-                android:scaleType="centerCrop"
-                android:src="@drawable/zorros" />
-
-        </FrameLayout>
-
-        <TextView
-            android:id="@+id/idNumber"
+    </FrameLayout>
+        <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="#1"
-            android:textColor="@android:color/black"
-            android:textSize="16sp"
-            tools:layout_editor_absoluteX="375dp"
-            tools:layout_editor_absoluteY="235dp"
-            tools:ignore="MissingConstraints" />
+            android:orientation="horizontal"
+            tools:ignore="MissingConstraints"
+            app:layout_constraintTop_toBottomOf="@id/toolbar"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginTop="140dp"
+            android:layout_marginEnd="16dp"
+            >
 
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/red_orange"
+                android:text="#"
+                android:textSize="16sp"/>
+
+            <TextView
+                android:id="@+id/idNumber"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:hint="ID"
+                android:textColor="@color/red_orange"
+                android:textSize="16sp"/>
+        </LinearLayout>
     </androidx.constraintlayout.widget.ConstraintLayout>
-</layout>
+    </layout>

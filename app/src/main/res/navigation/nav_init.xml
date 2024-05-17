@@ -25,6 +25,9 @@
         <action
             android:id="@+id/action_appointmentSchedulerFragment_to_addNewAppointmentFragment"
             app:destination="@id/addNewAppointmentFragment" />
+        <action
+            android:id="@+id/action_appointmentSchedulerFragment_to_appointmentDetailsFragment"
+            app:destination="@id/appointmentDetailsFragment" />
     </fragment>
     <fragment
         android:id="@+id/addNewAppointmentFragment"
@@ -32,6 +35,14 @@
         android:label="AddNewAppointmentFragment" >
         <action
             android:id="@+id/action_addNewAppointmentFragment_to_appointmentSchedulerFragment"
+            app:destination="@id/appointmentSchedulerFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/appointmentDetailsFragment"
+        android:name="com.equipo1.dogapp.view.fragment.AppointmentDetailsFragment"
+        android:label="AppointmentDetailsFragment" >
+        <action
+            android:id="@+id/action_appointmentDetailsFragment_to_appointmentSchedulerFragment"
             app:destination="@id/appointmentSchedulerFragment" />
     </fragment>
 </navigation>
