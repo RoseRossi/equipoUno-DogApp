@@ -62,7 +62,7 @@ class AddNewAppointmentFragment : Fragment() {
 
         binding.btnSave.setOnClickListener {
             val selectedSymptom = binding.spinner.selectedItem.toString()
-            if (selectedSymptom.isNullOrBlank() || selectedSymptom == getString(R.string.default_spinner_text)) {
+            if (selectedSymptom.isBlank() || selectedSymptom == getString(R.string.default_spinner_text)) {
                 Toast.makeText(requireContext(), "Selecciona un síntoma", Toast.LENGTH_SHORT).show()
             } else {
                 Toast.makeText(requireContext(), "Cita guardada", Toast.LENGTH_SHORT).show()
