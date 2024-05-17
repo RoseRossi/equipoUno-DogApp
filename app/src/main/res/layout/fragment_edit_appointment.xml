@@ -7,7 +7,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@color/bg_tertiary"
-        tools:context=".view.fragment.AddNewAppointmentFragment">
+        tools:context=".view.fragment.EditNewAppointmentFragment">
 
         <androidx.appcompat.widget.Toolbar
             android:id="@+id/toolbar"
@@ -43,7 +43,7 @@
                     android:padding="8dp"
                     android:paddingStart="100dp"
                     android:paddingEnd="100dp"
-                    android:text="@string/new_appointment"
+                    android:text="@string/edit_appointment"
                     android:textColor="@color/white"
                     android:textSize="20sp"
                     android:textStyle="bold" />
@@ -68,10 +68,24 @@
                 android:hint="@string/petName">
 
                 <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/editText1"
+                    android:id="@+id/editPetName"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:maxLength="15" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                style="@style/OutlinedBox"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="30dp"
+                android:hint="@string/ownerName">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/editOwner"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:maxLength="30" />
             </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.textfield.TextInputLayout
@@ -86,28 +100,6 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:padding="15dp" />
-
-                <com.google.android.material.textfield.TextInputLayout
-                    style="@style/TextAppearance.AppCompat.Widget.TextView.SpinnerItem"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="30dp">
-
-                </com.google.android.material.textfield.TextInputLayout>
-            </com.google.android.material.textfield.TextInputLayout>
-
-            <com.google.android.material.textfield.TextInputLayout
-                style="@style/OutlinedBox"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="30dp"
-                android:hint="@string/ownerName">
-
-                <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/editText2"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:maxLength="30" />
             </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.textfield.TextInputLayout
@@ -118,21 +110,15 @@
                 android:hint="@string/telNumber">
 
                 <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/editText3"
+                    android:id="@+id/editPhone"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:inputType="number"
                     android:maxLength="10" />
-
-                <Spinner
-                    android:id="@+id/spinner"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center" />
             </com.google.android.material.textfield.TextInputLayout>
 
             <Button
-                android:id="@+id/btnSave"
+                android:id="@+id/btnEdit"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
@@ -141,12 +127,12 @@
                 android:layout_marginEnd="100dp"
                 android:background="@drawable/button"
                 android:backgroundTint="@color/red_orange"
-                android:drawableStart="@drawable/save_icon"
+                android:drawableStart="@drawable/edit_icon"
                 android:paddingStart="25dp"
                 android:paddingEnd="22dp"
-                android:text="@string/save"
+                android:text="@string/edit"
                 android:textAllCaps="false"
-                android:textColor="@android:color/white"
+                android:textColor="@android:color/black"
                 android:textStyle="bold"
                 tools:ignore="RtlSymmetry" />
         </LinearLayout>

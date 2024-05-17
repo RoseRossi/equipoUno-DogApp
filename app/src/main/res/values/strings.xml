@@ -3,12 +3,14 @@
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="new_appointment">Nueva Cita</string>
+    <string name="edit_appointment">Editar Cita</string>
     <string name="back">Back</string>
     <string name="petName">Nombre de la mascota</string>
     <string name="petBreed">Raza</string>
     <string name="ownerName">Nombre del propietario</string>
     <string name="telNumber">Teléfono</string>
     <string name="save">Guardar Cita</string>
+    <string name="edit">Editar Cita</string>
     <string name="default_spinner_text">Síntomas</string>
     <string-array name="illness_array">
         <item>Síntomas</item>

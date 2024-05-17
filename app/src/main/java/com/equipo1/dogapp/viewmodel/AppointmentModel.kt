@@ -9,6 +9,7 @@ import androidx.lifecycle.viewModelScope
 import com.equipo1.dogapp.model.InventoryAppointment
 import com.equipo1.dogapp.repository.AppointmentRepository
 import kotlinx.coroutines.launch
+import android.util.Log;
 
 class AppointmentModel(application: Application) : AndroidViewModel(application)
 {
@@ -71,6 +72,19 @@ class AppointmentModel(application: Application) : AndroidViewModel(application)
                 _progresState.value = false
             }
 
+        }
+    }
+
+    fun  update(inventory: InventoryAppointment)
+    {
+        viewModelScope.launch {
+
+            try {
+                inventoryRepository.updateRepositoy(inventory)
+                Log.d("UpdateRepositoy", "Inventory updated successfully: $inventory")
+            } catch (e: Exception) {
+                Log.d("UpdateRepositoy", "Error updating inventory: ${e.message}")
+            }
         }
     }
 }
